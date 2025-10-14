@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sreecharan Manne - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- EmailJS Configuration -->
+    <script src="email-config.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Portfolio</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#experience" class="nav-link">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- Animated Background Particles -->
+        <div class="particles-container">
+            <canvas id="particles-canvas"></canvas>
+        </div>
+        
+        <!-- Theme Toggle -->
+        <div class="theme-toggle">
+            <button id="theme-btn" class="theme-btn">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Sreecharan Manne</h1>
+                <h2 class="hero-subtitle">Software Engineer @ Amazon Ads | Ex-Nissan, TigerAnalytics</h2>
+                <p class="hero-description">
+                    Driven and adaptable software enthusiast with a problem-solving mindset, strong work ethic, and a commitment to collaboration, learning, and growth.
+                </p>
+                
+                <!-- Live GitHub Stats -->
+                <div class="github-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="github-repos">--</span>
+                        <span class="stat-label">Repositories</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="github-followers">--</span>
+                        <span class="stat-label">Followers</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="github-stars">--</span>
+                        <span class="stat-label">Total Stars</span>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#projects" class="btn btn-secondary">View Projects</a>
+                    <button class="btn btn-accent" id="terminal-btn">
+                        <i class="fas fa-terminal"></i> Open Terminal
+                    </button>
+                </div>
+                <div class="hero-social">
+                    <a href="https://www.linkedin.com/in/sree-charan-manne/" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/SreeCharanManne" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <div class="profile-info">
+                        <h3>Software Engineer</h3>
+                        <p>Austin, Texas</p>
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="stat-number">4+</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">6</span>
+                                <span class="stat-label">Companies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I am a passionate software engineer currently working at Amazon Ads, with a strong background in 
+                        software development, data science, and machine learning. My journey in technology has been 
+                        driven by curiosity and a desire to solve complex problems through innovative solutions.
+                    </p>
+                    <p>
+                        With experience spanning from web development to machine learning algorithms, I have worked 
+                        at leading companies including Amazon, Nissan Motor Corporation, and Tiger Analytics. I hold a 
+                        Master's degree in Computer Science from Arizona State University and have been recognized with 
+                        multiple scholarships and awards for academic excellence including Dean's Merit Scholarship and 
+                        Indian Central Government Scholarship.
+                    </p>
+                    <div class="skills">
+                        <h3>Technical Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Docker Products</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">Machine Learning</span>
+                            <span class="skill-tag">Data Science</span>
+                            <span class="skill-tag">Firebase</span>
+                            <span class="skill-tag">Google Cloud Platform</span>
+                            <span class="skill-tag">Bootstrap</span>
+                            <span class="skill-tag">Database Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience & Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Software Development Engineer, Amazon Ads</h3>
+                        <h4>Amazon</h4>
+                        <p class="timeline-date">June 2024 - Present (1 year 5 months)</p>
+                        <p>Austin, Texas, United States</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>ISSC Client Service Assistant</h3>
+                        <h4>Arizona State University</h4>
+                        <p class="timeline-date">October 2022 - May 2024 (1 year 8 months)</p>
+                        <p>United States</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Software Engineer</h3>
+                        <h4>Nissan Motor Corporation</h4>
+                        <p class="timeline-date">May 2023 - March 2024 (11 months)</p>
+                        <p>California, United States</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Software Engineer</h3>
+                        <h4>Tiger Analytics</h4>
+                        <p class="timeline-date">August 2021 - July 2022 (1 year)</p>
+                        <p>Chennai, Tamil Nadu, India</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Software Intern</h3>
+                        <h4>Tiger Analytics</h4>
+                        <p class="timeline-date">February 2021 - July 2021 (6 months)</p>
+                        <p>Chennai, Tamil Nadu, India</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Software Engineer Intern</h3>
+                        <h4>CodeMania</h4>
+                        <p class="timeline-date">January 2020 - March 2020 (3 months)</p>
+                        <p>Hyderabad, Telangana, India</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Research Assistant</h3>
+                        <h4>SASTRA University</h4>
+                        <p class="timeline-date">January 2019 - April 2019 (4 months)</p>
+                        <p>Chennai, Tamil Nadu, India</p>
+                        <p>Privacy Preserving Fingerprint Authentication at the Cloud Server for eHealth Services: Worked on building a steganography algorithm using Matlab which uses SHA-256 for encryption. The objective of this paper is to design a scheme to carry out the fingerprint match at the cloud server that will not compromise the fingerprints.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Master's degree, Computer Science</h3>
+                        <h4>Arizona State University</h4>
+                        <p class="timeline-date">2022 - 2024</p>
+                        <p>Engineering Graduate Scholarship recipient. Focused on advanced software engineering and data science.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Bachelor of Technology - BTech, Computer Science</h3>
+                        <h4>Shanmugha Arts, Science, Technology and Research Academy</h4>
+                        <p class="timeline-date">2017 - 2021</p>
+                        <p>Dean's Merit Scholarship Awardee for 2019-20 and 2020-21. Indian Central Government Scholarship recipient for being in Top 10% in CBSE XI and XII examination.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Multimodel Swine Flu Detector</h3>
+                        <a href="https://github.com/SreeCharanManne/Swineflu_pediction_using_ML_GCP" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <p>Advanced machine learning system using 5 different algorithms (SVM, NB, DT, KNN, RF) to predict swine flu with 95% accuracy. Features model comparison and automatic best model selection.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">GCP</span>
+                        <span class="tech-tag">Data Science</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Dining Management System</h3>
+                        <a href="https://github.com/SreeCharanManne/SoftwareProject.git" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <p>University dining management system with attendance-based fee calculation. Built with modern web technologies and real-time database integration.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">Bootstrap</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>NewsApp with Covid-19 Tracker</h3>
+                        <a href="https://github.com/SreeCharanManne/Covid-19-Tracker" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <p>Real-time news application integrated with Covid-19 case tracking worldwide. Deployed on Heroku with responsive design and live data updates.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">API Integration</span>
+                        <span class="tech-tag">Heroku</span>
+                        <span class="tech-tag">Responsive Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications & Publications</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3>Architecting with Google Compute Engine Specialization</h3>
+                    <p>Google Cloud Platform</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Tiger Edge - A Student Developer Program in DataScience</h3>
+                    <p>Tiger Analytics</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <h3>Microsoft Technology Associate: Windows Development Fundamentals (MTA)</h3>
+                    <p>Microsoft</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Privacy Preserving Fingerprint Authentication at the Cloud Server for eHealth Services</h3>
+                    <p>Published Research Paper</p>
+                    <a href="https://eudl.eu/doi/10.4108/eai.13-7-2018.162688" target="_blank" class="cert-link">View Publication</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="awards">
+        <div class="container">
+            <h2 class="section-title">Awards & Recognition</h2>
+            <div class="awards-grid">
+                <div class="award-item">
+                    <div class="award-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="award-content">
+                        <h3>Engineering Graduate Scholarship</h3>
+                        <p>Arizona State University • July 2022</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="award-content">
+                        <h3>Dean's Merit Scholarship</h3>
+                        <p>SASTRA • 2019-20, 2020-21</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="award-content">
+                        <h3>Facebook Dev Club Hackathon</h3>
+                        <p>Facebook Dev Club Bangalore</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="award-content">
+                        <h3>Indian Central Govt. Scholarship</h3>
+                        <p>Top 10% in CBSE XI and XII examination</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Terminal Section -->
+    <section id="terminal" class="terminal-section">
+        <div class="container">
+            <h2 class="section-title">Interactive Terminal</h2>
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <div class="terminal-title">sreecharan@portfolio:~$</div>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">sreecharan@portfolio:~$</span>
+                        <span class="command">whoami</span>
+                    </div>
+                    <div class="terminal-output">Software Engineer @ Amazon Ads</div>
+                    <div class="terminal-line">
+                        <span class="prompt">sreecharan@portfolio:~$</span>
+                        <span class="command">ls skills/</span>
+                    </div>
+                    <div class="terminal-output">JavaScript  Python  React.js  Machine-Learning  AWS  Docker</div>
+                    <div class="terminal-line">
+                        <span class="prompt">sreecharan@portfolio:~$</span>
+                        <span class="command">cat experience.txt</span>
+                    </div>
+                    <div class="terminal-output">4+ years of software development experience<br>Amazon | Nissan | Tiger Analytics | ASU</div>
+                    <div class="terminal-line active">
+                        <span class="prompt">sreecharan@portfolio:~$</span>
+                        <span class="command-input" id="command-input" contenteditable="true"></span>
+                        <span class="cursor">|</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Showcase Section -->
+    <section id="code-showcase" class="code-showcase">
+        <div class="container">
+            <h2 class="section-title">Code Snippets</h2>
+            <div class="code-tabs">
+                <button class="tab-btn active" data-tab="python">Python</button>
+                <button class="tab-btn" data-tab="javascript">JavaScript</button>
+                <button class="tab-btn" data-tab="react">React</button>
+            </div>
+            <div class="code-container">
+                <div class="code-tab active" id="python-tab">
+                    <pre><code class="language-python"># Machine Learning Model Comparison
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score
+
+def compare_models(X_train, X_test, y_train, y_test):
+    models = {
+        'Random Forest': RandomForestClassifier(n_estimators=100),
+        'SVM': SVC(kernel='rbf', C=1.0)
+    }
+    
+    results = {}
+    for name, model in models.items():
+        model.fit(X_train, y_train)
+        predictions = model.predict(X_test)
+        accuracy = accuracy_score(y_test, predictions)
+        results[name] = accuracy
+        print(f"{name}: {accuracy:.2%}")
+    
+    return results</code></pre>
+                </div>
+                <div class="code-tab" id="javascript-tab">
+                    <pre><code class="language-javascript">// Real-time Data Fetcher with Error Handling
+class DataFetcher {
+    constructor(apiUrl) {
+        this.apiUrl = apiUrl;
+        this.cache = new Map();
+    }
+
+    async fetchData(endpoint, useCache = true) {
+        const cacheKey = `${this.apiUrl}${endpoint}`;
+        
+        if (useCache && this.cache.has(cacheKey)) {
+            return this.cache.get(cacheKey);
+        }
+
+        try {
+            const response = await fetch(`${this.apiUrl}${endpoint}`);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            
+            const data = await response.json();
+            this.cache.set(cacheKey, data);
+            return data;
+        } catch (error) {
+            console.error('Fetch error:', error);
+            throw error;
+        }
+    }
+}</code></pre>
+                </div>
+                <div class="code-tab" id="react-tab">
+                    <pre><code class="language-jsx">// Interactive Dashboard Component
+import React, { useState, useEffect } from 'react';
+
+const Dashboard = () => {
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [filter, setFilter] = useState('all');
+
+    useEffect(() => {
+        fetchDashboardData();
+    }, [filter]);
+
+    const fetchDashboardData = async () => {
+        setLoading(true);
+        try {
+            const response = await fetch(`/api/dashboard?filter=${filter}`);
+            const result = await response.json();
+            setData(result);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        &lt;div className="dashboard"&gt;
+            &lt;FilterBar onFilterChange={setFilter} /&gt;
+            {loading ? &lt;Spinner /&gt; : &lt;DataGrid data={data} /&gt;}
+        &lt;/div&gt;
+    );
+};</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always interested in discussing new opportunities, innovative projects, and collaborations. Feel free to reach out!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Austin, Texas, United States</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:sreecharanmanne2000@gmail.com">sreecharanmanne2000@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="https://www.linkedin.com/in/sree-charan-manne/" target="_blank">LinkedIn Profile</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/SreeCharanManne" target="_blank">GitHub Profile</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Sreecharan Manne. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
