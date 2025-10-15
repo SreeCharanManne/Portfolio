@@ -1,271 +1,410 @@
-/* Hero Section Styles */
+/* Twitch-inspired Hero Section */
 .hero {
   min-height: 100vh;
+  background: #0f0f23;
+  background-image: 
+    radial-gradient(circle at 25% 25%, #1f1f38 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, #2d1b69 0%, transparent 50%);
+  color: #efeff1;
   display: flex;
   align-items: center;
-  padding: 2rem 0;
   position: relative;
   overflow: hidden;
 }
 
-.bg-pattern-1 {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  background-attachment: fixed;
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, transparent 30%, rgba(145, 70, 255, 0.03) 50%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(145, 70, 255, 0.03) 50%, transparent 70%);
+  pointer-events: none;
 }
 
 .hero-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 2rem;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-main {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  grid-template-columns: 1fr 350px;
+  gap: 3rem;
+  align-items: start;
 }
 
+/* Hero Content */
 .hero-content {
-  z-index: 2;
+  padding-top: 2rem;
 }
 
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: white;
-  line-height: 1.2;
-  min-height: 4.2rem;
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  font-weight: 400;
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(145, 70, 255, 0.1);
+  border: 1px solid rgba(145, 70, 255, 0.3);
+  color: #bf94ff;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
   margin-bottom: 1.5rem;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.4;
-}
-
-.hero-description {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-  max-width: 500px;
-}
-
-/* GitHub Stats */
-.github-stats {
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
   backdrop-filter: blur(10px);
 }
 
-.stat-item {
-  text-align: center;
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #00f593;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
 }
 
-.stat-value {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 0.5rem;
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
-.stat-label {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(135deg, #efeff1 0%, #bf94ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
 }
 
-/* Hero Buttons */
-.hero-buttons {
+.hero-role {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #9147ff;
+  margin: 0 0 0.25rem 0;
+}
+
+.hero-company {
+  font-size: 1.125rem;
+  color: #adadb8;
+  margin: 0 0 1.5rem 0;
+  font-weight: 500;
+}
+
+.hero-description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #adadb8;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+/* Hero Actions */
+.hero-actions {
   display: flex;
   gap: 1rem;
-  margin-bottom: 2rem;
   flex-wrap: wrap;
 }
 
 .btn {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
 }
 
 .btn-primary {
-  background: #ff6b6b;
+  background: #9147ff;
   color: white;
 }
 
 .btn-primary:hover {
-  background: #ff5252;
+  background: #772ce8;
   transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(145, 70, 255, 0.3);
 }
 
 .btn-secondary {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-}
-
-.btn-secondary:hover {
-  background: white;
-  color: #667eea;
-  transform: translateY(-2px);
-}
-
-.btn-accent {
-  background: #4ecdc4;
-  color: white;
-}
-
-.btn-accent:hover {
-  background: #45b7aa;
-  transform: translateY(-2px);
-}
-
-/* Social Links */
-.hero-social {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  color: white;
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
-
-.social-link:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-3px);
-  color: white;
-}
-
-/* Hero Image */
-.hero-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.profile-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2rem;
-  text-align: center;
+  color: #efeff1;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.profile-info h3 {
-  color: white;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
-.profile-info p {
-  color: rgba(255, 255, 255, 0.8);
+.btn-terminal {
+  background: rgba(0, 245, 147, 0.1);
+  color: #00f593;
+  border: 1px solid rgba(0, 245, 147, 0.3);
+}
+
+.btn-terminal:hover {
+  background: rgba(0, 245, 147, 0.15);
+  border-color: rgba(0, 245, 147, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 245, 147, 0.2);
+}
+
+/* Profile Card */
+.hero-sidebar {
+  position: sticky;
+  top: 2rem;
+}
+
+.profile-card {
+  background: rgba(24, 24, 27, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.profile-header {
+  display: flex;
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
-.stats {
+.profile-avatar {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.avatar-placeholder {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #9147ff, #bf94ff);
+  border-radius: 50%;
   display: flex;
-  gap: 2rem;
+  align-items: center;
   justify-content: center;
+  font-size: 1.5rem;
+  color: white;
 }
 
-.stat {
-  text-align: center;
+.status-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  background: #00f593;
+  border: 3px solid #18181b;
+  border-radius: 50%;
 }
 
-.stat-number {
-  display: block;
-  font-size: 2rem;
+.profile-info h3 {
+  font-size: 1.125rem;
   font-weight: 700;
-  color: #4ecdc4;
+  color: #efeff1;
+  margin: 0 0 0.25rem 0;
+}
+
+.profile-title {
+  font-size: 0.875rem;
+  color: #9147ff;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.profile-location {
+  font-size: 0.875rem;
+  color: #adadb8;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Profile Stats */
+.profile-stats {
+  margin-bottom: 1.5rem;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.stat-row:last-child {
+  margin-bottom: 0;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #9147ff;
   margin-bottom: 0.25rem;
 }
 
 .stat-label {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+  color: #adadb8;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
+/* Profile Social */
+.profile-social {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #adadb8;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #efeff1;
+  transform: translateY(-2px);
+}
+
+.social-btn i {
+  font-size: 1rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
-  .hero-container {
+  .hero-main {
     grid-template-columns: 1fr;
     gap: 2rem;
-    text-align: center;
   }
   
-  .hero-title {
-    font-size: 2.5rem;
+  .hero-sidebar {
+    order: -1;
+    position: static;
   }
   
-  .hero-subtitle {
-    font-size: 1.2rem;
+  .profile-card {
+    margin-bottom: 1rem;
   }
   
-  .github-stats {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .hero-buttons {
+  .hero-actions {
     justify-content: center;
   }
   
-  .stats {
+  .btn {
+    flex: 1;
+    min-width: 140px;
+    justify-content: center;
+  }
+  
+  .stat-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .profile-social {
     flex-direction: column;
-    gap: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .hero {
-    padding: 1rem 0;
+  .hero-container {
+    padding: 1rem;
   }
   
-  .hero-container {
-    padding: 0 1rem;
+  .hero-content {
+    padding-top: 1rem;
   }
   
   .hero-title {
     font-size: 2rem;
   }
   
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
+  .hero-role {
+    font-size: 1.25rem;
+  }
+  
+  .hero-company {
+    font-size: 1rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
   }
   
   .btn {
-    width: 100%;
-    max-width: 250px;
-    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.8rem;
   }
+}
+
+/* Animation for typewriter effect */
+.hero-title {
+  position: relative;
+}
+
+.hero-title::after {
+  content: '|';
+  animation: blink 1s infinite;
+  color: #9147ff;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
