@@ -583,6 +583,30 @@ const Dashboard = () => {
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.min.js"></script>
+    
+    <!-- Basic Protection Measures -->
+    <script>
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // Disable F12, Ctrl+Shift+I, Ctrl+U
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                (e.ctrlKey && e.key === 'u')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Disable text selection
+        document.onselectstart = () => false;
+        document.ondragstart = () => false;
+        
+        // Console warning
+        console.log('%cSTOP!', 'color: red; font-size: 50px; font-weight: bold;');
+        console.log('%cThis is a browser feature intended for developers. Portfolio by Sreecharan Manne.', 'color: red; font-size: 16px;');
+    </script>
 </body>
 </html>
