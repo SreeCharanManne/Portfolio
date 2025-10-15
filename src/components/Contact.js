@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { emailConfig } from '../emailConfig';
 import './Contact.css';
 
 const Contact = () => {
@@ -23,13 +25,34 @@ const Contact = () => {
     setSubmitStatus('');
 
     try {
-      // EmailJS integration would go here
-      // For now, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Check if EmailJS is configured
+      if (emailConfig.serviceId === 'service_6p8cw04' || 
+          emailConfig.templateId === 'template_p8ifdyp' || 
+          emailConfig.publicKey === 'YOUR_PUBLIC_KEY') {
+        // EmailJS not configured, show helpful message
+        setSubmitStatus('config');
+        return;
+      }
+
+      // Send email using EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: 'Sree Charan Manne'
+      };
+
+      await emailjs.send(
+        emailConfig.serviceId,
+        emailConfig.templateId,
+        templateParams,
+        emailConfig.publicKey
+      );
       
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
+      console.error('EmailJS Error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -110,6 +133,11 @@ const Contact = () => {
               {submitStatus === 'error' && (
                 <div className="status-message error">
                   Failed to send message. Please try again or contact me directly.
+                </div>
+              )}
+              {submitStatus === 'config' && (
+                <div className="status-message warning">
+                  EmailJS is not configured yet. Please update the configuration in src/emailConfig.js or contact me directly at sreecharanmanne2000@gmail.com
                 </div>
               )}
             </form>
