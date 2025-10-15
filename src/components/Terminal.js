@@ -49,16 +49,38 @@ const Terminal = () => {
   };
 
   useEffect(() => {
+    // Only focus if the terminal section is visible in viewport
+    const terminalSection = document.getElementById('terminal');
+    if (terminalSection && inputRef.current) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+              inputRef.current?.focus();
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+      
+      observer.observe(terminalSection);
+      
+      return () => observer.disconnect();
+    }
+  }, []);
+
+  // Focus input when user clicks on terminal
+  const handleTerminalClick = () => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
-  }, [history]);
+  };
 
   return (
     <section id="terminal" className="terminal-section">
       <div className="container">
         <h2 className="section-title">Interactive Terminal</h2>
-        <div className="terminal-container">
+        <div className="terminal-container" onClick={handleTerminalClick}>
           <div className="terminal-header">
             <div className="terminal-controls">
               <span className="control close"></span>
