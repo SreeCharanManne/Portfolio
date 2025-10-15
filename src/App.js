@@ -30,11 +30,6 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = !isDarkTheme;
-    setIsDarkTheme(newTheme);
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-  };
 
   return (
     <div className={`App ${isDarkTheme ? 'dark-theme' : 'light-theme'} ${isLoaded ? 'loaded' : ''}`}>
