@@ -28,7 +28,7 @@ const Contact = () => {
       // Check if EmailJS is configured
       if (emailConfig.serviceId === 'service_6p8cw04' || 
           emailConfig.templateId === 'template_p8ifdyp' || 
-          emailConfig.publicKey === 'YOUR_PUBLIC_KEY') {
+          emailConfig.publicKey === 'ibRyrmlZrMtjzFn6O') {
         // EmailJS not configured, show helpful message
         setSubmitStatus('config');
         return;
