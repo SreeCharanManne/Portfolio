@@ -1,95 +1,55 @@
 import React from 'react';
 import './Experience.css';
+import { useReveal } from '../hooks/useReveal';
 
 const Experience = () => {
-    const timelineItems = [
-        {
-            title: "Software Development Engineer, Amazon Ads",
-            company: "Amazon",
-            date: "June 2024 - Present (1 year 5 months)",
-            location: "Austin, Texas, United States",
-            type: "work"
-        },
-        {
-            title: "ISSC Client Service Assistant",
-            company: "Arizona State University",
-            date: "October 2022 - May 2024 (1 year 8 months)",
-            location: "United States",
-            type: "work"
-        },
-        {
-            title: "Software Engineer",
-            company: "Nissan Motor Corporation",
-            date: "May 2023 - March 2024 (11 months)",
-            location: "California, United States",
-            type: "work"
-        },
-        {
-            title: "Software Engineer",
-            company: "Tiger Analytics",
-            date: "August 2021 - July 2022 (1 year)",
-            location: "Chennai, Tamil Nadu, India",
-            type: "work"
-        },
-        {
-            title: "Software Intern",
-            company: "Tiger Analytics",
-            date: "February 2021 - July 2021 (6 months)",
-            location: "Chennai, Tamil Nadu, India",
-            type: "work"
-        },
-        {
-            title: "Software Engineer Intern",
-            company: "CodeMania",
-            date: "January 2020 - March 2020 (3 months)",
-            location: "Hyderabad, Telangana, India",
-            type: "work"
-        },
-        {
-            title: "Research Assistant",
-            company: "SASTRA University",
-            date: "January 2019 - April 2019 (4 months)",
-            location: "Chennai, Tamil Nadu, India",
-            description: "Privacy Preserving Fingerprint Authentication at the Cloud Server for eHealth Services: Worked on building a steganography algorithm using Matlab which uses SHA-256 for encryption. The objective of this paper is to design a scheme to carry out the fingerprint match at the cloud server that will not compromise the fingerprints.",
-            type: "work"
-        },
-        {
-            title: "Master's degree, Computer Science",
-            company: "Arizona State University",
-            date: "2022 - 2024",
-            description: "Engineering Graduate Scholarship recipient. Focused on advanced software engineering and data science.",
-            type: "education"
-        },
-        {
-            title: "Bachelor of Technology - BTech, Computer Science",
-            company: "Shanmugha Arts, Science, Technology and Research Academy",
-            date: "2017 - 2021",
-            description: "Dean's Merit Scholarship Awardee for 2019-20 and 2020-21. Indian Central Government Scholarship recipient for being in Top 10% in CBSE XI and XII examination.",
-            type: "education"
-        }
-    ];
+  const ref = useReveal();
+  const eduRef = useReveal();
+  const jobs = [
+    { title: 'Software Development Engineer', co: 'Amazon Ads', loc: 'Austin, TX', period: 'Jun 2024 — Present', desc: 'Engineered and deployed multi-format ad units (REC, OLV, ABC) for Alexa and IMDb, powering an advertising ecosystem generating $2B in annual revenue.' },
+    { title: 'Software Engineer', co: 'Nissan Motor Corporation', loc: 'California', period: 'May 2023 — Mar 2024', desc: 'Developed software systems for automotive engineering.' },
+    { title: 'Software Engineer', co: 'Tiger Analytics', loc: 'Chennai, India', period: 'Aug 2021 — Jul 2022', desc: 'Built data pipelines and analytics applications.' },
+    { title: 'Software Intern', co: 'Tiger Analytics', loc: 'Chennai, India', period: 'Feb 2021 — Jul 2021', desc: 'Contributed to analytics platform development.' },
+  ];
+  const edu = [
+    { deg: 'M.S. in Computer Science', school: 'Arizona State University', period: '2022 — 2024', note: 'Engineering Graduate Scholarship' },
+    { deg: 'B.Tech in Computer Science', school: 'SASTRA University', period: '2017 — 2021', note: "Dean's Merit Scholarship" },
+  ];
 
-    return (
-        <section id="experience" className="experience">
-            <div className="container">
-                <h2 className="section-title">Experience & Education</h2>
-                <div className="timeline">
-                    {timelineItems.map((item, index) => (
-                        <div key={index} className="timeline-item">
-                            <div className="timeline-marker"></div>
-                            <div className="timeline-content">
-                                <h3>{item.title}</h3>
-                                <h4>{item.company}</h4>
-                                <p className="timeline-date">{item.date}</p>
-                                {item.location && <p>{item.location}</p>}
-                                {item.description && <p>{item.description}</p>}
-                            </div>
-                        </div>
-                    ))}
+  return (
+    <section id="experience" className="exp">
+      <div className="exp__wrap">
+        <div ref={ref} className="reveal">
+          <p className="label">Experience</p>
+          <div className="exp__list">
+            {jobs.map((j, i) => (
+              <div key={i} className="exp__item">
+                <div className="exp__header">
+                  <div><h3 className="exp__title">{j.title}</h3><p className="exp__co">{j.co} · {j.loc}</p></div>
+                  <span className="exp__period">{j.period}</span>
                 </div>
-            </div>
-        </section>
-    );
+                <p className="exp__desc">{j.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div ref={eduRef} className="reveal">
+          <h3 className="exp__sub">Education</h3>
+          <div className="exp__list">
+            {edu.map((e, i) => (
+              <div key={i} className="exp__item">
+                <div className="exp__header">
+                  <div><h3 className="exp__title">{e.deg}</h3><p className="exp__co">{e.school}</p></div>
+                  <span className="exp__period">{e.period}</span>
+                </div>
+                <p className="exp__desc">{e.note}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Experience;

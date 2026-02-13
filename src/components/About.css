@@ -1,88 +1,20 @@
-/* About Section */
-.about {
-    padding: 100px 0;
-    background: var(--bg-color);
-    color: var(--text-color);
+.about__wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+.label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+.about__body { margin-bottom: 32px; }
+.about__body p { font-size: 15px; line-height: 1.75; color: var(--text-secondary); margin-bottom: 14px; }
+.about__body strong { color: var(--text-primary); font-weight: 600; }
+.about__skills-label { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; }
+.about__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  display: inline-block; padding: 6px 14px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+  font-size: 13px; font-weight: 500; color: var(--text-secondary);
+  transition: all var(--ease);
+  cursor: default;
 }
-
-.about-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.about-text {
-    margin-bottom: 2rem;
-}
-
-.about-text p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    color: var(--text-secondary);
-}
-
-.skills {
-    margin-top: 3rem;
-    text-align: left;
-}
-
-.skills h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--text-color);
-    text-align: center;
-}
-
-.skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    justify-content: center;
-}
-
-.skill-tag {
-    background: var(--accent-color);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    cursor: default;
-}
-
-.skill-tag:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .about {
-        padding: 60px 0;
-    }
-    
-    .about-text p {
-        font-size: 1rem;
-    }
-    
-    .skills h3 {
-        font-size: 1.3rem;
-    }
-    
-    .skill-tag {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .about {
-        padding: 40px 0;
-    }
-    
-    .skill-tags {
-        gap: 0.5rem;
-    }
+.tag:hover {
+  border-color: var(--accent); color: var(--accent);
+  background: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(232, 85, 61, 0.1);
 }

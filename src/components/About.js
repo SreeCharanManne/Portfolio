@@ -1,55 +1,31 @@
 import React from 'react';
 import './About.css';
+import { useReveal } from '../hooks/useReveal';
 
 const About = () => {
-    const skills = [
-        'JavaScript',
-        'Docker Products',
-        'MySQL',
-        'Python',
-        'React.js',
-        'HTML/CSS',
-        'Machine Learning',
-        'Data Science',
-        'Firebase',
-        'Google Cloud Platform',
-        'Bootstrap',
-        'Database Management'
-    ];
+  const ref = useReveal();
+  const tagsRef = useReveal();
+  const skills = ['JavaScript','Python','React.js','HTML/CSS','Machine Learning','Data Science','Docker','MySQL','Firebase','Google Cloud','AWS','Bootstrap'];
 
-    return (
-        <section id="about" className="about">
-            <div className="container">
-                <h2 className="section-title">About Me</h2>
-                <div className="about-content">
-                    <div className="about-text">
-                        <p>
-                            I am a passionate software engineer currently working at Amazon Ads, with a strong background in 
-                            software development, data science, and machine learning. My journey in technology has been 
-                            driven by curiosity and a desire to solve complex problems through innovative solutions.
-                        </p>
-                        <p>
-                            With experience spanning from web development to machine learning algorithms, I have worked 
-                            at leading companies including Amazon, Nissan Motor Corporation, and Tiger Analytics. I hold a 
-                            Master's degree in Computer Science from Arizona State University and have been recognized with 
-                            multiple scholarships and awards for academic excellence including Dean's Merit Scholarship and 
-                            Indian Central Government Scholarship.
-                        </p>
-                        <div className="skills">
-                            <h3>Technical Skills</h3>
-                            <div className="skill-tags">
-                                {skills.map((skill, index) => (
-                                    <span key={index} className="skill-tag">
-                                        {skill}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+  return (
+    <section id="about" className="about">
+      <div className="about__wrap">
+        <div ref={ref} className="reveal">
+          <p className="label">About</p>
+          <div className="about__body">
+            <p>I'm a Software Engineer at <strong>Amazon Ads</strong> in Austin, Texas, focused on building reliable, scalable systems. My background spans full-stack development, data science, and AI.</p>
+            <p>Previously, I worked at <strong>Nissan Motor Corporation</strong> and <strong>Tiger Analytics</strong>, shipping production software and data pipelines. I hold a Master's in Computer Science from <strong>Arizona State University</strong> as an Engineering Graduate Scholar.</p>
+          </div>
+        </div>
+        <div ref={tagsRef} className="reveal">
+          <p className="about__skills-label">Technologies</p>
+          <div className="about__tags reveal-children visible">
+            {skills.map(s => <span key={s} className="tag">{s}</span>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default About;

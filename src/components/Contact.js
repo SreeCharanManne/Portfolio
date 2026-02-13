@@ -1,147 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { emailConfig } from '../emailConfig';
+import { emailConfig as EMAIL_CONFIG } from '../emailConfig';
+import { useReveal } from '../hooks/useReveal';
 import './Contact.css';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('');
+  const ref = useReveal();
+  const form = useRef();
+  const [status, setStatus] = useState(null);
+  const [sending, setSending] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('');
-
-    try {
-      // Check if EmailJS is configured (check for placeholder values)
-      if (emailConfig.serviceId === 'YOUR_SERVICE_ID' || 
-          emailConfig.templateId === 'YOUR_TEMPLATE_ID' || 
-          emailConfig.publicKey === 'YOUR_PUBLIC_KEY') {
-        // EmailJS not configured, show helpful message
-        setSubmitStatus('config');
-        return;
-      }
-
-      // Send email using EmailJS
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-        to_name: 'Sree Charan Manne'
-      };
-
-      await emailjs.send(
-        emailConfig.serviceId,
-        emailConfig.templateId,
-        templateParams,
-        emailConfig.publicKey
-      );
-      
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      console.error('EmailJS Error:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
+    setSending(true);
+    setStatus(null);
+    emailjs.sendForm(EMAIL_CONFIG.serviceId, EMAIL_CONFIG.templateId, form.current, EMAIL_CONFIG.publicKey)
+      .then(() => { setStatus('success'); setSending(false); form.current.reset(); })
+      .catch(() => { setStatus('error'); setSending(false); });
   };
 
   return (
     <section id="contact" className="contact">
-      <div className="container">
-        <h2 className="section-title">Get In Touch</h2>
-        <div className="contact-content">
-          <div className="contact-info">
-            <h3>Let's Connect</h3>
-            <p>I'm always interested in discussing new opportunities, innovative projects, and collaborations. Feel free to reach out!</p>
-            <div className="contact-details">
-              <div className="contact-item">
-                <i className="fas fa-map-marker-alt"></i>
-                <span>Austin, Texas, United States</span>
-              </div>
-              <div className="contact-item">
-                <i className="fas fa-envelope"></i>
-                <a href="mailto:sreecharanmanne2000@gmail.com">sreecharanmanne2000@gmail.com</a>
-              </div>
-              <div className="contact-item">
-                <i className="fab fa-linkedin"></i>
-                <a href="https://www.linkedin.com/in/sree-charan-manne/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
-              </div>
-              <div className="contact-item">
-                <i className="fab fa-github"></i>
-                <a href="https://github.com/SreeCharanManne" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
-              </div>
+      <div ref={ref} className="contact__wrap reveal">
+        <p className="label">Contact</p>
+        <div className="contact__grid">
+          <div className="contact__info">
+            <p className="contact__text">I'm always open to new opportunities and conversations. Feel free to reach out.</p>
+            <div className="contact__links">
+              <a href="mailto:sreecharanmanne2000@gmail.com"><i className="fas fa-envelope" /> sreecharanmanne2000@gmail.com</a>
+              <a href="https://linkedin.com/in/sree-charan-manne" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin" /> LinkedIn</a>
+              <a href="https://github.com/SreeCharanManne" target="_blank" rel="noopener noreferrer"><i className="fab fa-github" /> GitHub</a>
+              <span className="contact__loc"><i className="fas fa-map-marker-alt" /> Austin, Texas</span>
             </div>
           </div>
-          <div className="contact-form">
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <textarea
-                  name="message"
-                  placeholder="Your Message"
-                  rows="5"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                ></textarea>
-              </div>
-              <button 
-                type="submit" 
-                className="btn btn-primary"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
-              {submitStatus === 'success' && (
-                <div className="status-message success">
-                  Message sent successfully! I'll get back to you soon.
-                </div>
-              )}
-              {submitStatus === 'error' && (
-                <div className="status-message error">
-                  Failed to send message. Please try again or contact me directly.
-                </div>
-              )}
-              {submitStatus === 'config' && (
-                <div className="status-message warning">
-                  EmailJS is not configured yet. Please update the configuration in src/emailConfig.js or contact me directly at sreecharanmanne2000@gmail.com
-                </div>
-              )}
-            </form>
-          </div>
+          <form ref={form} onSubmit={handleSubmit} className="contact__form">
+            <input name="user_name" type="text" placeholder="Name" required />
+            <input name="user_email" type="email" placeholder="Email" required />
+            <textarea name="message" placeholder="Message" rows="5" required />
+            <button type="submit" disabled={sending}>{sending ? 'Sending…' : 'Send Message'}</button>
+            {status === 'success' && <p className="contact__status contact__status--ok">Message sent successfully!</p>}
+            {status === 'error' && <p className="contact__status contact__status--err">Something went wrong. Try again.</p>}
+          </form>
         </div>
       </div>
     </section>

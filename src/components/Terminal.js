@@ -16,11 +16,11 @@ const Terminal = () => {
   const commands = {
     help: 'Available commands: help, whoami, skills, experience, education, contact, clear, projects',
     whoami: 'Software Engineer @ Amazon Ads',
-    skills: 'JavaScript, Python, React.js, Machine Learning, AWS, Docker, MySQL, GCP, Firebase',
+    skills: 'JavaScript, Python, React.js, AI, Machine Learning, AWS, Docker, MySQL, GCP, Firebase',
     experience: 'Amazon Ads (2024-Present)\nNissan Motor Corporation (2023-2024)\nTiger Analytics (2022-2023)',
     education: 'Master of Science in Computer Science - Arizona State University (2022-2024)\nBachelor of Technology in Computer Science - SASTRA University (2018-2022)',
     contact: 'Email: sreecharanmanne2000@gmail.com\nLinkedIn: linkedin.com/in/sree-charan-manne\nGitHub: github.com/SreeCharanManne',
-    projects: 'Multimodel Swine Flu Detector, Portfolio Website, Machine Learning Projects\nType "github" to visit my GitHub profile',
+    projects: 'Multimodel Swine Flu Detector, Portfolio Website, AI, Machine Learning Projects\nType "github" to visit my GitHub profile',
     github: 'Opening GitHub profile...',
     clear: 'CLEAR_TERMINAL'
   };
@@ -78,8 +78,6 @@ const Terminal = () => {
 
   return (
     <section id="terminal" className="terminal-section">
-      <div className="container">
-        <h2 className="section-title">Interactive Terminal</h2>
         <div className="terminal-container" onClick={handleTerminalClick}>
           <div className="terminal-header">
             <div className="terminal-controls">
@@ -122,7 +120,6 @@ const Terminal = () => {
               </div>
             </form>
           </div>
-        </div>
       </div>
     </section>
   );

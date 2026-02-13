@@ -2,130 +2,46 @@ import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState('home');
 
   useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 100;
-      setScrolled(isScrolled);
-
-      // Update active section based on scroll position
-      const sections = ['home', 'about', 'experience', 'projects', 'certifications', 'awards', 'terminal', 'contact'];
-      const current = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 200 && rect.bottom >= 200;
-        }
-        return false;
-      });
-      
-      if (current) {
-        setActiveSection(current);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 10);
+      const ids = ['home','about','experience','projects','certifications','awards','contact'];
+      for (let i = ids.length - 1; i >= 0; i--) {
+        const el = document.getElementById(ids[i]);
+        if (el && el.getBoundingClientRect().top <= 100) { setActive(ids[i]); break; }
       }
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const go = (id) => { setMenuOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); };
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    closeMenu();
-  };
+  const links = [
+    { id: 'about', label: 'About' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'contact', label: 'Contact' },
+  ];
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="nav-container">
-        <div className="nav-logo">
-          <h2>Portfolio</h2>
+    <nav className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
+      <div className="nav__inner">
+        <button className="nav__logo" onClick={() => go('home')}>SM</button>
+        <div className={`nav__links ${menuOpen ? 'nav__links--open' : ''}`}>
+          {links.map(l => (
+            <button key={l.id} className={`nav__link ${active === l.id ? 'nav__link--active' : ''}`} onClick={() => go(l.id)}>
+              {l.label}
+            </button>
+          ))}
         </div>
-        
-        <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          <li className="nav-item">
-            <button 
-              className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
-              onClick={() => scrollToSection('home')}
-            >
-              Home
-            </button>
-          </li>
-          <li className="nav-item">
-            <button 
-              className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
-              onClick={() => scrollToSection('about')}
-            >
-              About
-            </button>
-          </li>
-          <li className="nav-item">
-            <button 
-              className={`nav-link ${activeSection === 'experience' ? 'active' : ''}`}
-              onClick={() => scrollToSection('experience')}
-            >
-              Experience
-            </button>
-          </li>
-          <li className="nav-item">
-            <button 
-              className={`nav-link ${activeSection === 'projects' ? 'active' : ''}`}
-              onClick={() => scrollToSection('projects')}
-            >
-              Projects
-            </button>
-          </li>
-          <li className="nav-item">
-            <button 
-              className={`nav-link ${activeSection === 'certifications' ? 'active' : ''}`}
-              onClick={() => scrollToSection('certifications')}
-            >
-              Certifications
-            </button>
-          </li>
-          <li className="nav-item">
-            <button 
-              className={`nav-link ${activeSection === 'awards' ? 'active' : ''}`}
-              onClick={() => scrollToSection('awards')}
-            >
-              Awards
-            </button>
-          </li>
-          <li className="nav-item">
-            <button 
-              className={`nav-link ${activeSection === 'terminal' ? 'active' : ''}`}
-              onClick={() => scrollToSection('terminal')}
-            >
-              Terminal
-            </button>
-          </li>
-          <li className="nav-item">
-            <button 
-              className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
-              onClick={() => scrollToSection('contact')}
-            >
-              Contact
-            </button>
-          </li>
-        </ul>
-        
-        <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </div>
+        <button className={`nav__burger ${menuOpen ? 'nav__burger--open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+          <span /><span />
+        </button>
       </div>
     </nav>
   );
