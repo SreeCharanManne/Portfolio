@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Thumbnail</title>
+<style>
+  @font-face {
+    font-family: 'Amazon Ember';
+    src: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIFont-amazonember_rg-cc7ebaa05a2cd3b02c0929ac0475a44ab30b7efa._V2_.woff2) format('woff2');
+  }
+  @font-face {
+    font-family: 'Amazon Ember Modern Display';
+    font-style: normal;
+    src: url(https://m.media-amazon.com/images/G/01/AmazonEmberModernDisplay/EmberModernDisplayStd-Regular.woff2) format('woff2');
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    font-family: 'Amazon Ember', -apple-system, sans-serif;
+    background: #f5f0eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Background decorations */
+  .bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.2;
+  }
+  .bg-orb-1 {
+    width: 400px; height: 400px;
+    background: linear-gradient(135deg, #e8553d, #f59e0b);
+    top: -100px; left: -80px;
+  }
+  .bg-orb-2 {
+    width: 350px; height: 350px;
+    background: linear-gradient(135deg, #f59e0b, #e8553d);
+    bottom: -120px; right: -60px;
+  }
+  .bg-orb-3 {
+    width: 200px; height: 200px;
+    background: #e8553d;
+    top: 50%; right: 200px;
+    opacity: 0.08;
+  }
+
+  /* Geometric shapes */
+  .shape {
+    position: absolute;
+    opacity: 0.08;
+  }
+  .ring-2 {
+    width: 80px; height: 80px;
+    border: 2px solid #e8553d;
+    border-radius: 50%;
+    bottom: 60px; left: 100px;
+  }
+  .square-1 {
+    width: 50px; height: 50px;
+    border: 2px solid #e8553d;
+    border-radius: 8px;
+    transform: rotate(45deg);
+    bottom: 100px; right: 250px;
+  }
+  .dot-1 {
+    width: 12px; height: 12px;
+    background: #e8553d;
+    border-radius: 50%;
+    top: 100px; left: 200px;
+    opacity: 0.15;
+  }
+  .dot-2 {
+    width: 8px; height: 8px;
+    background: #e8553d;
+    border-radius: 50%;
+    bottom: 150px; right: 150px;
+    opacity: 0.12;
+  }
+
+  /* Card */
+  .card {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 60px 80px;
+    max-width: 1080px;
+  }
+
+  /* Photo */
+  .photo-wrap {
+    flex-shrink: 0;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    background: linear-gradient(#f5f0eb, #f5f0eb) padding-box,
+                linear-gradient(135deg, #e8553d, #f59e0b) border-box;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(232, 85, 61, 0.15);
+  }
+  .photo-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+
+  /* Text content */
+  .content {
+    flex: 1;
+  }
+
+  .greeting {
+    font-size: 16px;
+    font-weight: 500;
+    color: #e8553d;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .name {
+    font-family: 'Amazon Ember Modern Display', 'Amazon Ember', sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .name-accent {
+    background: linear-gradient(135deg, #e8553d, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .role {
+    font-size: 22px;
+    color: #4a4a4a;
+    margin-bottom: 16px;
+    letter-spacing: 0.01em;
+  }
+  .role strong {
+    color: #1a1a1a;
+    font-weight: 700;
+  }
+
+  .tagline {
+    font-size: 15px;
+    color: #7a7a7a;
+    line-height: 1.6;
+    max-width: 420px;
+    margin-bottom: 24px;
+  }
+
+  /* Tech pills */
+  .pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .pill {
+    font-size: 12px;
+    font-weight: 500;
+    color: #7a7a7a;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid #ddd7d0;
+    background: #faf7f4;
+    letter-spacing: 0.02em;
+  }
+
+  /* Bottom accent bar */
+  .accent-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #e8553d, #f59e0b);
+  }
+
+  /* URL watermark */
+  .url {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    font-size: 13px;
+    color: #c8c1b9;
+    letter-spacing: 0.02em;
+  }
+</style>
+</head>
+<body>
+  <!-- Background decorations -->
+
+  <!-- Card content -->
+  <div class="card">
+    <div class="photo-wrap">
+      <img src="me.jpeg" alt="Sreecharan Manne">
+    </div>
+    <div class="content">
+      <div class="greeting">Hello, I'm</div>
+      <h1 class="name">Sreecharan <span class="name-accent">Manne</span></h1>
+      <p class="role">Software Engineer at <strong>Amazon </strong></p>
+      <p class="tagline">Building scalable systems at the intersection of software engineering, AI, ML, and cloud infrastructure.</p>
+      <div class="pills">
+        <span class="pill">React.js</span>
+        <span class="pill">Java</span>
+        <span class="pill">Python</span>
+        <span class="pill">AI</span>
+        <span class="pill">AWS</span>
+        <span class="pill">Docker</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="accent-bar"></div>
+  <div class="url">sreecharanmanne.com</div>
+</body>
+</html>

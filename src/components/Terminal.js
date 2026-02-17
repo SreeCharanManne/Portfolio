@@ -5,7 +5,7 @@ const Terminal = () => {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState([
     { type: 'command', text: 'whoami' },
-    { type: 'output', text: 'Software Engineer @ Amazon Ads' },
+    { type: 'output', text: 'Software Engineer @ Amazon ' },
     { type: 'command', text: 'ls skills/' },
     { type: 'output', text: 'JavaScript  Python  React.js  Machine-Learning  AWS  Docker' },
     { type: 'command', text: 'cat experience.txt' },
@@ -15,9 +15,9 @@ const Terminal = () => {
 
   const commands = {
     help: 'Available commands: help, whoami, skills, experience, education, contact, clear, projects',
-    whoami: 'Software Engineer @ Amazon Ads',
+    whoami: 'Software Engineer @ Amazon ',
     skills: 'JavaScript, Python, React.js, AI, Machine Learning, AWS, Docker, MySQL, GCP, Firebase',
-    experience: 'Amazon Ads (2024-Present)\nNissan Motor Corporation (2023-2024)\nTiger Analytics (2022-2023)',
+    experience: 'Amazon  (2024-Present)\nNissan Motor Corporation (2023-2024)\nTiger Analytics (2022-2023)',
     education: 'Master of Science in Computer Science - Arizona State University (2022-2024)\nBachelor of Technology in Computer Science - SASTRA University (2018-2022)',
     contact: 'Email: sreecharanmanne2000@gmail.com\nLinkedIn: linkedin.com/in/sree-charan-manne\nGitHub: github.com/SreeCharanManne',
     projects: 'Multimodel Swine Flu Detector, Portfolio Website, AI, Machine Learning Projects\nType "github" to visit my GitHub profile',

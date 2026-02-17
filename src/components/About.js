@@ -13,7 +13,7 @@ const About = () => {
         <div ref={ref} className="reveal">
           <p className="label">About</p>
           <div className="about__body">
-            <p>I'm a Software Engineer at <strong>Amazon Ads</strong> in Austin, Texas, focused on building reliable, scalable systems. My background spans full-stack development, data science, and AI.</p>
+            <p>I'm a Software Engineer at <strong>Amazon </strong> in Austin, Texas, focused on building reliable, scalable systems. My background spans full-stack development, data science, and AI.</p>
             <p>Previously, I worked at <strong>Nissan Motor Corporation</strong> and <strong>Tiger Analytics</strong>, shipping production software and data pipelines. I hold a Master's in Computer Science from <strong>Arizona State University</strong> as an Engineering Graduate Scholar.</p>
           </div>
         </div>

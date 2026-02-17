@@ -2,7 +2,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Experience from './components/Experience';
+import { Experience, Education } from './components/Experience';
 import Projects from './components/Projects';
 import Certifications from './components/Certifications';
 import Awards from './components/Awards';
@@ -39,6 +39,8 @@ function App() {
         <About />
         <div className="divider"><hr /></div>
         <Experience />
+        <div className="divider"><hr /></div>
+        <Education />
         <div className="divider"><hr /></div>
         <Projects />
         <div className="divider"><hr /></div>

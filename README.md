@@ -1,6 +1,6 @@
 # React Portfolio - Sreecharan Manne
 
-A modern, responsive portfolio website built with React showcasing my experience as a Software Engineer at Amazon Ads.
+A modern, responsive portfolio website built with React showcasing my experience as a Software Engineer at Amazon .
 
 ## 🚀 Live Demo
 

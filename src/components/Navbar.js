@@ -9,7 +9,7 @@ const Navbar = () => {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 10);
-      const ids = ['home','about','experience','projects','certifications','awards','contact'];
+      const ids = ['home','about','experience','education','projects','certifications','awards','contact'];
       for (let i = ids.length - 1; i >= 0; i--) {
         const el = document.getElementById(ids[i]);
         if (el && el.getBoundingClientRect().top <= 100) { setActive(ids[i]); break; }
@@ -24,6 +24,7 @@ const Navbar = () => {
   const links = [
     { id: 'about', label: 'About' },
     { id: 'experience', label: 'Experience' },
+    { id: 'education', label: 'Education' },
     { id: 'projects', label: 'Projects' },
     { id: 'contact', label: 'Contact' },
   ];
